@@ -118,7 +118,9 @@ public final class BourneShellScript extends FileMonitoringTask {
         }
         else {
             // Escaping creates issues when the connection is established through Cygwin sshd(see issue: JENKINS-41225)
-            preparedVars = escape(envVars);
+            // Actually, it seems to also cause a problem when sshing other remotes
+            // disable it altogether for the moment.
+            //preparedVars = escape(envVars);
         }
 
         String cmd;
